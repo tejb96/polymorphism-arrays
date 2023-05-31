@@ -13,6 +13,11 @@ public class Stats {
 		grades = new int[100];
 		count = 0;
 	}
+	
+	public void add(int grade) {
+		grades[count] = grade;
+		count++;
+	}
 
 	/**
 	 * 
@@ -35,5 +40,37 @@ public class Stats {
 			}
 			
 		}
+	}
+	
+	public double getMean() {
+		int sum = 0;
+		for (int i = 0; i < count; i++) {
+			sum += grades[i];
+		}
+		double mean =(double) sum/count;
+		return mean;
+	}
+	
+	public double getMedian() {
+		sort();
+		double median = 0;
+		int index3 = (count-1)/2;		 
+		if(count  % 2 != 0) {
+			median = (double)grades[index3];
+		}
+		else {
+			median = (double)(grades[count/2-1]+ grades[count/2])/2;
+		}
+		return median;
+	}
+	public String toString() {
+		String stats = "Values: ";
+		sort();
+		for (int i = 0; i < count; i++) {
+			stats += grades[i];
+			
+		}
+		stats += "\nMean= " + getMean() + "\nMedian= " + getMedian();
+		return stats;
 	}
 }

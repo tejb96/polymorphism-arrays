@@ -13,10 +13,12 @@ public class StatsGUI implements ActionListener {
 	private JTextArea display;
 	private JButton reset, displayStats;
 	// TODO: Add stats instance variable
+	private Stats stats;
 
 	public StatsGUI(String title) { 
 		
 		//TODO: Instantiate stats object
+		stats = new Stats();
 		
 		
 		JFrame jfrm = new JFrame(title);
@@ -53,11 +55,22 @@ public class StatsGUI implements ActionListener {
 		if (e.getSource() == inputField) {
 			int number = Integer.parseInt(inputField.getText());
 			// TODO: ADD THE GRADE TO stats
+			
+			stats.add(number);
+			this.inputField.setText("");
+			String numberString = Integer.toString(number); // Convert int to String
+			 this.display.append(numberString);
 		}
 		//TODO: Add handling of display button -  DISPLAY THE RESULTS
+		else if (e.getSource() == displayStats) {
+			display.append('\n'+stats.toString());
+		}
 		
 		// TODO: Add handling of reset button - CREATE A NEW stats
-
+		else if (e.getSource() == reset) {
+			stats = new Stats();
+			display.setText("");
+		}
 	}
 
 	public static void main(String[] args) {
