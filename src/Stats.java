@@ -1,19 +1,28 @@
 /**
  * Partial implementation of Stats class
+ * This class represents a collection of grades and provides methods to perform statistical calculations.
  * 
- * @author
+ * @author Tej
  * 
  */
 public class Stats {
 
 	private int grades[];
 	private int count;
-
+	
+	/**
+	 * Constructs a new Stats object with an initial capacity of 100 grades,.
+	 */
 	public Stats() {
 		grades = new int[100];
 		count = 0;
 	}
 	
+	/**
+	 * Adds a grade to the collection.
+	 * 
+	 * @param grade The grade to be added.
+	 */
 	public void add(int grade) {
 		grades[count] = grade;
 		count++;
@@ -42,6 +51,11 @@ public class Stats {
 		}
 	}
 	
+	/**
+	 * Calculates the mean of the grades.
+	 * 
+	 * @return The mean of the grades.
+	 */
 	public double getMean() {
 		int sum = 0;
 		for (int i = 0; i < count; i++) {
@@ -51,23 +65,36 @@ public class Stats {
 		return mean;
 	}
 	
+	/**
+	 * Calculates the median of the grades.
+	 * 
+	 * @return The median of the grades.
+	 */
 	public double getMedian() {
 		sort();
-		double median = 0;
-		int index3 = (count-1)/2;		 
+		double median = 0;	 
 		if(count  % 2 != 0) {
-			median = (double)grades[index3];
+			median = (double)grades[(count-1)/2];
 		}
 		else {
 			median = (double)(grades[count/2-1]+ grades[count/2])/2;
 		}
 		return median;
 	}
+	
+	/**
+	 * Creates a string representation of the grades, mean, and median.
+	 * 
+	 * @return The string representation of the grades, mean, and median.
+	 */
 	public String toString() {
 		String stats = "Values: ";
 		sort();
 		for (int i = 0; i < count; i++) {
 			stats += grades[i];
+			if (i<count) {
+				stats += " ";
+			}
 			
 		}
 		stats += "\nMean= " + getMean() + "\nMedian= " + getMedian();
