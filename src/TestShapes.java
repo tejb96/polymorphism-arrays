@@ -54,10 +54,10 @@ public class TestShapes {
 
 		Shape2D[] shapes = { 
 				//TODO uncomment once implemented
-//				new RightTriangle(1.0, 2.0), 
+				new RightTriangle(1.0, 2.0), 
 				new Rectangle(1.0, 2.0), 
 				//TODO uncomment once implemented
-//				new Square(2.0) 
+				new Square(2.0) 
 				};
 
 		for(Shape2D shape: shapes) {
