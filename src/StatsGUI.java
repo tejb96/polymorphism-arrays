@@ -6,24 +6,26 @@ import javax.swing.*;
  * 
  * Partial implementation of the Stats GUI
  *
- * @author
+ * @author 
  */
 public class StatsGUI implements ActionListener {
 	private JTextField inputField;
 	private JTextArea display;
 	private JButton reset, displayStats;
 	// TODO: Add stats instance variable
+	private Stats stats;
 
 	public StatsGUI(String title) { 
 		
 		//TODO: Instantiate stats object
+		stats = new Stats();
 		
 		
 		JFrame jfrm = new JFrame(title);
 		jfrm.setLayout(new FlowLayout());
-		jfrm.setSize(300, 200);  
+		jfrm.setSize(270, 200);  
 		jfrm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+		jfrm.setResizable(true);
 		JLabel prompt = new JLabel("Next Grade (press ENTER)");
 		jfrm.add(prompt);
 		
@@ -53,11 +55,22 @@ public class StatsGUI implements ActionListener {
 		if (e.getSource() == inputField) {
 			int number = Integer.parseInt(inputField.getText());
 			// TODO: ADD THE GRADE TO stats
+			
+			stats.add(number);    // Calls the add method from Stats class
+			this.inputField.setText(""); // Clears input field after grade is entered
+			String numberString = Integer.toString(number); // Convert int to String
+			 this.display.append(numberString + " "); // Displays the grade entered
 		}
 		//TODO: Add handling of display button -  DISPLAY THE RESULTS
+		else if (e.getSource() == displayStats) { // If the display button is clicked
+			display.append('\n'+stats.toString());  // Calls the toString method from Stats
+		}
 		
 		// TODO: Add handling of reset button - CREATE A NEW stats
-
+		else if (e.getSource() == reset) { // If the reset button is clicked
+			stats = new Stats(); 
+			display.setText("");
+		}
 	}
 
 	public static void main(String[] args) {
