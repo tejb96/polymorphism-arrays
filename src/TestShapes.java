@@ -66,17 +66,17 @@ public class TestShapes {
 		}
 		
 		//TODO uncomment once implemented
-//		System.out.println("\n*** Reference point change ***");
-//		printReferencePointChangeTest(new Rectangle(1.0, 2.0));
-//		
-//		System.out.println("\n*** Change get reference point test ***");
-//		printReferencePointGetTest(new Rectangle(1.0, 2.0));
-//		
-//		System.out.println("\n*** Change set reference point test ***");
-//		printReferencePointSetTest(new Rectangle(1.0, 2.0));
+		System.out.println("\n*** Reference point change ***");
+		printReferencePointChangeTest(new Rectangle(1.0, 2.0));
+		
+		System.out.println("\n*** Change get reference point test ***");
+		printReferencePointGetTest(new Rectangle(1.0, 2.0));
+		
+		System.out.println("\n*** Change set reference point test ***");
+		printReferencePointSetTest(new Rectangle(1.0, 2.0));
 //
-//		System.out.println("\n*** Square set width/height test *** ");
-//		printSquareWidthTest(new Square());
+		System.out.println("\n*** Square set width/height test *** ");
+		printSquareWidthTest(new Square());
 
 	}
 
