@@ -24,8 +24,10 @@ public class Stats {
 	 * @param grade The grade to be added.
 	 */
 	public void add(int grade) {
-		grades[count] = grade;
-		count++;
+		if(count<grades.length) {
+			grades[count] = grade;
+			count++;
+		}
 	}
 
 	/**
@@ -57,11 +59,16 @@ public class Stats {
 	 * @return The mean of the grades.
 	 */
 	public double getMean() {
-		int sum = 0;
-		for (int i = 0; i < count; i++) {
-			sum += grades[i];
+		double mean;
+		if(count==0) {mean = 0;}
+		else {
+			int sum = 0;
+			for (int i = 0; i < count; i++) {
+				sum += grades[i];
+			}
+			mean =(double) sum/count;
 		}
-		double mean =(double) sum/count;
+		
 		return mean;
 	}
 	
@@ -76,6 +83,7 @@ public class Stats {
 		if(count  % 2 != 0) {
 			median = (double)grades[(count-1)/2];
 		}
+		else if(count == 0) {return median;}
 		else {
 			median = (double)(grades[count/2-1]+ grades[count/2])/2;
 		}
